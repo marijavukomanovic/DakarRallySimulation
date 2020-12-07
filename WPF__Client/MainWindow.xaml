@@ -1,0 +1,108 @@
+﻿<Window x:Class="WPF__Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF__Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="1200">
+    <Grid>
+        <DockPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" DockPanel.Dock="Top">
+                <Button x:Name="AddRace" Content="Add race" Height="30" Width="97" Click="AddRace_Click" Margin="-1000,50,0,0" />
+                <Label Content="race start:"  Height="25" Width="80" Margin="-700,-30,0,0"/>
+                <TextBox x:Name="RaceId" Height="30" Width="100" Margin="-500,-30,0,0" />
+
+                <Button x:Name="GetVehicleByID" Content="GetVehicleByID" Height="30" Width="97"  Click="GetVehicleByID_Click" Margin="-200,-30,0,0" />
+                <Label Content="GetVehicleByID"  Height="25" Width="80" Margin="0,-30,0,0"/>
+                <TextBox x:Name="tbGetVehicleByID" Height="30" Width="100" Margin="200,-30,0,0"/>
+                </StackPanel>
+          
+            <StackPanel HorizontalAlignment="Right" Margin=" 30,10,0,0">
+                <Button x:Name="btAddVehicle" Content="Add vehicle" Height="30" Width="97"  Click="btAddVehicle_Click" />
+                <Button x:Name="btUpdateVehicle" Content="Update vehicle" Height="30" Width="97"  Click="btUpdateVehicle_Click" />
+                <Label Content="team name::" Height="25" Width="80" />
+                <TextBox x:Name="tbTeamName" Height="30" Width="100"/>
+                <Label Content="vehicle model:"  Height="25" Width="80" />
+                <TextBox x:Name="tbVeicleModel" Height="30" Width="100" >
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            Truck
+                            SportsCar
+                            TerrainCar
+                            SportMotorcycle
+                            CrossMotorcycle                            
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+                <Label Content="vehicle date:"  Height="25" Width="80" />
+                <TextBox x:Name="tbVeicleDate" Height="30" Width="100"/>
+                <Label Content="vehicle ID:" Height="25" Width="80" />
+                <TextBox x:Name="tbVeicleId" Height="30" Width="100"/>
+
+            </StackPanel>
+
+            <!--<Label Content="race start:" DockPanel.Dock="Top" Height="25" Width="80"/>
+            <TextBox x:Name="RaceId" Height="30" Width="100" DockPanel.Dock="Top" Margin="0,0,0,0"/>-->
+            <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                <StackPanel HorizontalAlignment="Left"  DockPanel.Dock="Right" Margin="30,0,0,0">
+                    <Button x:Name="btGetAllRaces" Content="GetAllRaces" Height="30" Width="97"  Click="btGetAllRaces_Click"/>
+                    <ListBox x:Name="lbGetAllRaces"  Width="200" Height="250"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right"   Width="209" Margin="30,0,0,0">
+                    <Button x:Name="btGetAllVehicles" Content="GetAllvehicles" Height="30" Width="97"   Click="btGetAllVehicles_Click"/>
+                    <ListBox x:Name="lbGetAllhicle"  Width="200" Height="250"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel VerticalAlignment="Top" Margin="30,10,0,0">
+                    <Button x:Name="btAddVehicleToRace" Content="Add vehicle to race" Height="30" Width="100" Click="btAddVehicleToRace_Click"/>
+                    <Label Content="    vehicle id" Height=" 30" Width="80"/>
+                    <TextBox x:Name="tbAddVEhicelToRace" Height="30" Width="70"/>
+                    <Button x:Name="btGetStatistic" Content="Get statistic" Height="30" Width="100" Click="btGetStatistic_Click"/>
+                    <Label Content="ID for vehicle statistic"/>
+                    <TextBox x:Name="tbGetStatistic" Height="30" Width="70"/>
+                    <Button x:Name="btGetRaceStatus" Content="Get race status" Height="30" Width="100" Click="btGetRaceStatus_Click"/>
+                    <Label Content="ID for race status"/>
+                    <TextBox x:Name="tbGetRaceStatus" Height="30" Width="70"/>
+                    <!--<Button x:Name="btStartRace" Content="Start race" Height="30" Width="100" Click="btStartRace_Click"/>-->
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel VerticalAlignment="Top" Margin="30,10,0,0">
+                    <ComboBox Grid.Row="2" Grid.Column="1" Height="25" Width="100" SelectedIndex="0" Name="cmbDeviceDefinitionId" IsEnabled="True">
+                        <ComboBoxItem Content="Car" Name="Car"></ComboBoxItem>
+                        <ComboBoxItem Content="Truck" Name="Truck"></ComboBoxItem>
+                        <ComboBoxItem Content="Motorcycle" Name="Motorcycle"></ComboBoxItem>
+                    </ComboBox>
+                    <Button x:Name="btFilterType" Content="FilterBy type" Height="30" Width="100" Click="btFilterType_Click"/>
+                    <Button x:Name="StartRace" Content="StartRace" Height="30" Width="100" Click="StartRace_Click"/>
+                    <Label Content="ID of racs to start"/>
+                    <TextBox x:Name="tbStartRace" Height="30" Width="70"/>
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <StackPanel VerticalAlignment="Top" Margin="50,0,0,0">
+                        <Label Content="teamName" Height="30" Width="90"/>
+                        <TextBox x:Name="filterTimName" Height="30" Width="100"/>
+                        <Label Content="model" Height="30" Width="90"/>
+                        <TextBox x:Name="filterModel" Height="30" Width="100"/>
+                        <Label Content="date" Height="30" Width="90"/>
+                        <TextBox x:Name="filterDate" Height="30" Width="100"/>
+                        <ComboBox Grid.Row="2" Grid.Column="1" Height="25" Width="100"  Name="cmbId" IsEnabled="True">
+                            <ComboBoxItem Content="pending" Name="pending"></ComboBoxItem>
+                            <ComboBoxItem Content="running" Name="running"></ComboBoxItem>
+                            <ComboBoxItem Content="finished" Name="finished"></ComboBoxItem>
+                            
+                        </ComboBox>
+                        <Button x:Name="btfindBy" Content="Find" Height="30" Width="80" Click="btfindBy_Click"/>
+                        <ListBox x:Name="lbFilter" Height="100" Width="200"/>
+                    </StackPanel >
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                        <CheckBox x:Name="cbDistance">Distance</CheckBox>                      
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
