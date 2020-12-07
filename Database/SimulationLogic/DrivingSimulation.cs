@@ -19,6 +19,7 @@ namespace Database.SimulationLogic
                 {
                  await Task.Run(()=> calculating(vehicle,st));
                 }
+                else{ break; }
 
             } while (vehicle.DistanceToFinish < 10000);
             if (vehicle.DistanceToFinish >= 10000 || vehicle.vehicleState.Equals(VehicleState.HeavyMalfunction))

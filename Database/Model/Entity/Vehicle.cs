@@ -39,7 +39,7 @@ namespace Database.Model.Entity
             VehicleManufacturingDate = vehicle_manufacturing_date;
             vehicleState = VehicleState.Pending;
             CurrentTime = 0;
-            DistanceToFinish = 10000;
+            DistanceToFinish = 0;
             RandomNumber = 0;
             TimeSpentOnFixingRest = 0;
             if (Helper.vehicleRuleDic.ContainsKey(vehicle_model))

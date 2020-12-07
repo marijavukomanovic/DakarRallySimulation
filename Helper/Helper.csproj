@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperForApi.cs" />
+    <Compile Include="HelperForApiGet.cs" />
+    <Compile Include="HelperForApiPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RaceModel.cs" />
     <Compile Include="VehicleModel.cs" />

@@ -38,7 +38,7 @@ namespace WPF__Client
         private async void GetVehicleByID_Click(object sender, RoutedEventArgs e)
         {
             
-            var retVal = await HelperForApi.Get("Vehicles", "GetVehicle", Convert.ToInt32(tbGetVehicleByID.Text));
+            var retVal = await HelperForApiGet.Get("Vehicles", "GetVehicle", Convert.ToInt32(tbGetVehicleByID.Text));
             lbGetAllhicle.Items.Clear();
             //HelperForApi.RedableJson(retVal.ToString());
             lbGetAllhicle.Items.Add(retVal);
@@ -46,21 +46,21 @@ namespace WPF__Client
 
         private async void AddRace_Click(object sender, RoutedEventArgs e)//addRace(salje se godina odrzavanja trke)
         {
-            string ret = await HelperForApi.Post("races","AddRace",Convert.ToInt32(RaceId.Text));
+            string ret = await HelperForApiPost.Post("races","AddRace",Convert.ToInt32(RaceId.Text));
             MessageBox.Show(HelperForApi.RedableJson(ret));
         }
 
         private async void btGetAllRaces_Click(object sender, RoutedEventArgs e)//vracaju se sve trke
         {
             lbGetAllhicle.Items.Clear();
-            var retVal = await (HelperForApi.GetAll("races", "GetAllRace"));
+            var retVal = await (HelperForApiGet.GetAll("races", "GetAllRace"));
             lbGetAllRaces.Items.Add(HelperForApi.RedableJson(retVal.ToString()));
 
         }
 
         private async void btAddVehicle_Click(object sender, RoutedEventArgs e)//dodaj vozilo
         {
-            string ret = await HelperForApi.Post(tbTeamName.Text, tbVeicleModel.Text, tbVeicleDate.Text);//ovo ispravi
+            string ret = await HelperForApiPost.Post(tbTeamName.Text, tbVeicleModel.Text, tbVeicleDate.Text);//ovo ispravi
             MessageBox.Show(ret);
         }
 
@@ -73,7 +73,7 @@ namespace WPF__Client
         private async void btGetAllVehicles_Click(object sender, RoutedEventArgs e)
         {
             
-           var retVl= await HelperForApi.GetAll("Vehicles", "GetVehicles");
+           var retVl= await HelperForApiGet.GetAll("Vehicles", "GetVehicles");
             lbGetAllhicle.Items.Clear();
             HelperForApi.RedableJson(retVl);
             lbGetAllhicle.Items.Add(retVl);
@@ -82,7 +82,7 @@ namespace WPF__Client
         private async  void btGetStatistic_Click(object sender, RoutedEventArgs e)
         {
            
-            var retVal = await HelperForApi.Get("Vehicles", "GetVehicleStatistic", Convert.ToInt32(tbGetStatistic.Text));
+            var retVal = await HelperForApiGet.Get("Vehicles", "GetVehicleStatistic", Convert.ToInt32(tbGetStatistic.Text));
             lbGetAllhicle.Items.Clear();
             lbGetAllhicle.Items.Add(retVal);
           
@@ -91,7 +91,7 @@ namespace WPF__Client
         private async void btGetRaceStatus_Click(object sender, RoutedEventArgs e)
         {
             
-            string retVal = await HelperForApi.Get("Races", "GetRaceStatus", Convert.ToInt32(tbGetRaceStatus.Text));
+            string retVal = await HelperForApiGet.Get("Races", "GetRaceStatus", Convert.ToInt32(tbGetRaceStatus.Text));
             lbGetAllhicle.Items.Clear();
             lbGetAllRaces.Items.Add(HelperForApi.RedableJson(retVal));
         }
@@ -99,21 +99,21 @@ namespace WPF__Client
         private async void btAddVehicleToRace_Click(object sender, RoutedEventArgs e)
         {
 
-            string ret = await HelperForApi.Post("vehicleraces", "AddVehicleToRace", Convert.ToInt32(tbAddVEhicelToRace.Text));
+            string ret = await HelperForApiPost.Post("vehicleraces", "AddVehicleToRace", Convert.ToInt32(tbAddVEhicelToRace.Text));
             MessageBox.Show(HelperForApi.RedableJson(ret));
         }
 
         private async void btFilterType_Click(object sender, RoutedEventArgs e)
         {
            
-            string retVal = await HelperForApi.Get("Vehicles", "GetAllVehiclesByType", cmb1[cmbDeviceDefinitionId.SelectedIndex]);
+            string retVal = await HelperForApiGet.Get("Vehicles", "GetAllVehiclesByType", cmb1[cmbDeviceDefinitionId.SelectedIndex]);
             lbGetAllhicle.Items.Clear();
             lbGetAllRaces.Items.Add(HelperForApi.RedableJson(retVal));
         }
 
         private async void StartRace_Click(object sender, RoutedEventArgs e)
         {
-            string retVal = await HelperForApi.Get("races", "StartRace", Convert.ToInt32(tbStartRace.Text));
+            string retVal = await HelperForApiGet.Get("races", "StartRace", Convert.ToInt32(tbStartRace.Text));
             lbGetAllhicle.Items.Clear();
             lbGetAllhicle.Items.Add("Ok");
            
@@ -122,7 +122,7 @@ namespace WPF__Client
         private async void btfindBy_Click(object sender, RoutedEventArgs e)
         {
             
-            string retVal = await HelperForApi.Get("Vehicles", "FindVehicle", filterTimName.Text, filterModel.Text, filterDate.Text, cmb2[cmbId.SelectedIndex],cbDistance.IsChecked.HasValue);
+            string retVal = await HelperForApiGet.Get("Vehicles", "FindVehicle", filterTimName.Text, filterModel.Text, filterDate.Text, cmb2[cmbId.SelectedIndex],cbDistance.IsChecked.HasValue);
             lbGetAllhicle.Items.Clear();
             lbGetAllhicle.Items.Add("Ok");
         }

@@ -39,8 +39,8 @@ namespace Database.Services
             {
                 if (item != null && !(item.status.Equals(RaceStatus.finished)))
                 {
-                    if (item.Start.Equals(DateTime.Now.Year))
-                    { r = item; }
+                    if (item.Start.Equals(DateTime.Now.Year.ToString()))
+                    { r = item;break; }
 
                 }
 

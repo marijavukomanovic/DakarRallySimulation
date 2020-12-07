@@ -57,8 +57,10 @@ namespace DakarRallySimulation.Controllers
         public ActionResult<RaceBindingModel> GetRaceStatus(int id)//Statistika trke
         {
             RaceBindingModel retRaceBindingModel = new RaceBindingModel();
-          int raceStatus = Convert.ToInt32(service.Get(id).status);
-
+            int raceStatus=-1;
+            if (service.Get(id) != null)
+            { raceStatus = Convert.ToInt32(service.Get(id).status); }
+            else { return Ok("NotFound"); }
             retRaceBindingModel.raceStatus = Helper.vehicleRaceStatusDicInt[raceStatus];
             retRaceBindingModel.numberOfVehicleGrupedByVehiclStatus = service.numberofVehiclebyStatus(id, _serviceRaceVehicle, _serviceVehicle);
             retRaceBindingModel.numberOfVehicleGrupedByVehiclType = service.numberofVehiclebyType(id, _serviceRaceVehicle, _serviceVehicle);
@@ -78,13 +80,13 @@ namespace DakarRallySimulation.Controllers
             
             changseV= await Task.Run(() => service.VehicleStartingRace(runningVehicle));
 
-            foreach (var item in changseV)
+          foreach (var item in changseV)
             {
                 _serviceVehicle.Update(item);
                 if (item.DistanceToFinish >= 10000)
                 { race.status = RaceStatus.finished; service.Update(race); }
             }
-
+            race.status = RaceStatus.finished; service.Update(race);
             return Ok();
 
         }
